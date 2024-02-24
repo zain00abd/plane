@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/JSBootstrapFile/css/bootstrap.css">
+  <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row justify-content-between container" id="page_card">
+
+      <% arr.forEach((data, index)=> { %>
+
+        <div class="card p-0 col-sm-12 col-lg-5 m-3" style="border: none;">
+          <div class="card-header text-center " id="card_top">
+            Featured
+          </div>
+
+          <div class="card-body" style="direction: rtl;">
+
+            <h5>الاسم: <%= data.Name %>
+            </h5>
+            <h5> نوع الباسبور: <%= data.Paspor %>
+            </h5>
+            <h5> الفيزا: <%= data.Visa %>
+            </h5>
+            <h5> الاقامة: <%= data.posin %>
+            </h5>
+            <h5> الشركة: <%= data.person %>
+            </h5>
+            <h5> الوزن: <%= data.kg %>
+            </h5>
+            <h5> نوع الرحلة: <%= data.radio1 %>
+            </h5>
+            <h5> رقم الهاتف: <%= data.phone %>
+            </h5>
+            <% if (data.S_date1 != undefined && data.S_date2 != undefined) { %>
+              <div class="bg-dark text-center border border-warning rounded">
+                <h5 class="rounded-bottom bg-dark-subtle text-dark" style="width: 40%; margin: auto;"> مجال البحث </h5>
+                <div class="row mt-4">
+                  <h6 class="col">من: <b class="border-bottom border-danger"> <%= data.S_date1 %></b></h6>
+                  <h6 class="col">الى: <b class="border-bottom border-danger"> <%= data.S_date2 %></b></h6>
+                </div>
+              </div>
+              <% console.log(data.S_date1) %>
+            <% } %>
+
+            <div class="accordion mt-4" id="accordionPanelsStayOpenExample" data-bs-theme="dark">
+
+              <% if (data.radio1=='ذهاب فقط' || data.radio1=='ذهاب وعودة' ) { %>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#<%= data._id %>-collapseOne" aria-expanded="true"
+                      aria-controls="panelsStayOpen-collapseOne">
+                      1=> الرحلة
+                    </button>
+                  </h2>
+                  <div id="<%= data._id %>-collapseOne" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      <div class="text-center">
+
+                        <h6> من: <%= data.take1 %>
+                        </h6>
+                        <h6> الى: <%= data.len1 %>
+                        </h6>
+                        <h6> وقت المغادرة: <%= data.date1_1 %>
+                        </h6>
+
+                        <% if (data.radio1=='ذهاب وعودة' ) { %>
+                          <h6> وقت العودة: <%= data.date2_1 %>
+                          </h6>
+                          <% } %>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <% } %>
+
+                  <% if (data.radio1=='وجهات متعددة' ) { %>
+
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#<%= data._id %>-collapseOne" aria-expanded="true"
+                          aria-controls="panelsStayOpen-collapseOne">
+                          1=> الرحلة الاولى
+                        </button>
+                      </h2>
+                      <div id="<%= data._id %>-collapseOne" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                          <div class="text-center">
+
+                            <h6> من: <%= data.take1 %>
+                            </h6>
+                            <h6> الى: <%= data.len1 %>
+                            </h6>
+                            <h6> وقت المغادرة: <%= data.date1_1 %>
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#<%= data._id %>-collapseOne2" aria-expanded="true"
+                          aria-controls="panelsStayOpen-collapseOne">
+                          2 => الرحلة الثانية
+                        </button>
+                      </h2>
+                      <div id="<%= data._id %>-collapseOne2" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                          <div class="text-center">
+
+                            <h6> من: <%= data.take2 %>
+                            </h6>
+                            <h6> الى: <%= data.len2 %>
+                            </h6>
+                            <h6> وقت المغادرة: <%= data.date1_2 %>
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <% if (data.date1_3 !='' ) { %>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#<%= data._id %>-collapseOne3" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            3 => الرحلة الثالثة
+                          </button>
+                        </h2>
+                        <div id="<%= data._id %>-collapseOne3" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                            <div class="text-center">
+
+                              <h6> من: <%= data.take3 %>
+                              </h6>
+                              <h6> الى: <%= data.len3 %>
+                              </h6>
+                              <h6> وقت المغادرة: <%= data.date1_3 %>
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% } %>
+
+                        <% if (data.date1_4 !='' ) { %>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed text-center" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#<%= data._id %>-collapseOne4"
+                                aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                4 => الرحلة الرابعة
+                              </button>
+                            </h2>
+                            <div id="<%= data._id %>-collapseOne4" class="accordion-collapse collapse">
+                              <div class="accordion-body">
+                                <div class="text-center">
+
+                                  <h6> من: <%= data.take4 %>
+                                  </h6>
+                                  <h6> الى: <%= data.len4 %>
+                                  </h6>
+                                  <h6> وقت المغادرة: <%= data.date1_4 %>
+                                  </h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <% } %>
+
+
+
+                            <% } %>
+
+            </div>
+
+          </div>
+
+          <div class="card-footer text-center " id="card_end">
+            <div class="row justify-content-evenly ">
+
+              <button id="WhatsApp_card" type="button" class="btn btn-success col-6" data-key="<%= data.phone %>">WhatsApp</button>
+              <h6 class="col-6 g-2" id="data_inp">
+                <%= moment(data.updatedAt).fromNow() %>
+              </h6>
+            </div>
+          </div>
+
+        </div>
+        <% }) %>
+
+    </div>
+
+  </div>
+
+
+  <script src="/JSBootstrapFile/popper/popper.js"></script>
+  <script src="/JSBootstrapFile/js/bootstrap.js"></script>
+
+  <script>
+    var whatsApp_btn = document.querySelectorAll('#WhatsApp_card')
+
+
+    whatsApp_btn.forEach(btn => {
+      btn.addEventListener('click', (data) => {
+        let phone = data.target.getAttribute('data-key')
+
+        const phoneWithPlus = phone.replace(/^00/, '+');
+        const message = '';
+        const url = `whatsapp://send?phone=${phoneWithPlus}&text=${encodeURIComponent(message)}`;
+        window.open(url);
+      })
+    })
+  </script>
+
+  <!-- <script>
+
+
+    let datainp = document.getElementById("data_inp")
+
+    let timeA;
+    function timeAgo(timestamp) {
+      const seconds = Math.floor((new Date() - timestamp) / 1000);
+      let interval = Math.floor(seconds / 31536000);
+
+      if (interval >= 1) {
+        return interval + " year" + (interval === 1 ? "" : "s") + " ago";
+      }
+      interval = Math.floor(seconds / 2592000);
+      if (interval >= 1) {
+        return interval + " month" + (interval === 1 ? "" : "s") + " ago";
+      }
+      interval = Math.floor(seconds / 86400);
+      if (interval >= 1) {
+        return interval + " day" + (interval === 1 ? "" : "s") + " ago";
+      }
+      interval = Math.floor(seconds / 3600);
+      if (interval >= 1) {
+        return interval + " hour" + (interval === 1 ? "" : "s") + " ago";
+      }
+      interval = Math.floor(seconds / 60);
+      if (interval >= 1) {
+        return interval + " minute" + (interval === 1 ? "" : "s") + " ago";
+      }
+      return Math.floor(seconds) + " second" + (seconds === 1 ? "" : "s") + " ago";
+    }
+
+    // اختبار الدالة
+    setInterval(() => {
+
+
+      const timestamp = Date.parse("2023-12-13T05:42:00Z");
+      timeA = timeAgo(timestamp)
+      datainp.innerHTML = timeA
+    }, 1000)
+  </script> -->
+
+  <!-- <script src="script.js" type="module"></script> -->
+</body>
+
+</html>
