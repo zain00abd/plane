@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose")
 const moment = require("moment")
 const index = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 const methodOverriade = require("method-override")
 index.use(methodOverriade("_method"))
 index.use(express.urlencoded({ extended:true }));
