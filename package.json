@@ -10,9 +10,6 @@
   },
   "keywords": [],
   "author": "",
-  "engines": {
-    "node": "20.x"
-  },
   "license": "ISC",
   "description": "",
   "dependencies": {
