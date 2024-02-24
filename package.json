@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "engines": {
-    "node": "20.11.0"
+    "node": "14.17.6"
   },
   "license": "ISC",
   "description": "",
