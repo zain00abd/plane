@@ -11,24 +11,6 @@ index.set("view engine", "ejs")
 index.use(express.static("public"))
 const Alldata = require("./models/schema")
 
-// Auto refresh
-function AutoRef(){
-    const path = require("path");
-    const livereload = require("livereload");
-    const liveReloadServer = livereload.createServer();
-    liveReloadServer.watch(path.join(__dirname, 'public'));
-     
-     
-    const connectLivereload = require("connect-livereload");
-    index.use(connectLivereload());
-     
-    liveReloadServer.server.once("connection", () => {
-      setTimeout(() => {
-        liveReloadServer.refresh("/");
-      }, 100);
-    });
-}
-AutoRef()
 
 
 
