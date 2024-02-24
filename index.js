@@ -1,14 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose")
 const moment = require("moment")
-const app = express();
+const index = express();
 const port = process.env.PORT || 3001;
 const methodOverriade = require("method-override")
-app.use(methodOverriade("_method"))
-app.use(express.urlencoded({ extended:true }));
-app.use(express.static("public"))
-app.set("view engine", "ejs")
-app.use(express.static("public"))
+index.use(methodOverriade("_method"))
+index.use(express.urlencoded({ extended:true }));
+index.use(express.static("public"))
+index.set("view engine", "ejs")
+index.use(express.static("public"))
 const Alldata = require("./models/schema")
 
 // Auto refresh
@@ -20,7 +20,7 @@ function AutoRef(){
      
      
     const connectLivereload = require("connect-livereload");
-    app.use(connectLivereload());
+    index.use(connectLivereload());
      
     liveReloadServer.server.once("connection", () => {
       setTimeout(() => {
@@ -32,10 +32,10 @@ AutoRef()
 
 
 
-app.get('/', (req,res) =>{
+index.get('/', (req,res) =>{
     res.render("index")
 })
-app.get('/view', (req,res) =>{
+index.get('/view', (req,res) =>{
     Alldata.find()
     .then((result) =>{
         res.render("view", {arr: result, moment: moment})
@@ -45,7 +45,7 @@ app.get('/view', (req,res) =>{
     })
 })
 // post requst
-app.post("/", (req,res) =>{
+index.post("/", (req,res) =>{
     Alldata.create(req.body)
     .then(() =>{
         res.redirect("/")
@@ -59,7 +59,7 @@ app.post("/", (req,res) =>{
 
 mongoose.connect("mongodb+srv://zaindiv:SK7A2fOZbLeJ08Ix@cluster0.32r5dqe.mongodb.net/all-data?retryWrites=true&w=majority")
 .then(() =>{
-    app.listen(port,() =>{
+    index.listen(port,() =>{
         console.log(`http://localhost:${port}/`)
     })
 })
