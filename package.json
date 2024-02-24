@@ -6,11 +6,11 @@
     "start": "node index.js",
     "dev": "nodemon --ext *"
   },
-  "keywords": [],
-  "author": "",
   "engines": {
     "node": "20.00.0"
   },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
